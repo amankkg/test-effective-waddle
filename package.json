@@ -3,9 +3,9 @@
     "start": "next start",
     "build": "next build",
     "dev": "next",
-    "lint": "eslint next.config.js pages/**/*.js components/**/*.js flow-typed/**/*",
     "fmt": "prettier --write next.config.js pages/**/*.js components/**/*.js flow-typed/**/*",
-    "fmt:css": "stylelint --fix pages/**/*.js components/**/*.js"
+    "lint": "eslint next.config.js pages/**/*.js components/**/*.js flow-typed/**/*",
+    "lint:css": "stylelint pages/**/*.js components/**/*.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -27,6 +27,7 @@
     "eslint-plugin-unicorn": "^10.0.0",
     "flow-bin": "^0.105.2",
     "husky": "^3.0.4",
+    "now": "^16.1.1",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
     "stylelint": "^10.1.0",
