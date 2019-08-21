@@ -1,13 +1,13 @@
 // @flow
-
 type Unit = number // e.g. euro
 type SubUnit = number // e.g. euro cent
-type MonetaryValue = number // ultimate value
 type DisplayValue = {
   // e.g. $2.5 = $2.00 and 50c
   unit: Unit,
   subUnit: Unit,
 }
+
+export type MonetaryValue = number // ultimate value
 
 export const getMonetaryValue = ({unit, subUnit}: DisplayValue) =>
   Math.floor(unit) * 100 + Math.floor(subUnit)

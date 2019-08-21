@@ -27,15 +27,15 @@ const Root = styled.div`
   border-radius: 50px;
 
   & > * {
-    opacity: ${props => (props.emptied ? '0.5' : '1')};
+    opacity: ${props => (props.outOfStock ? '0.5' : '1')};
   }
 `
 
 function ItemStocks({title, image, balance}: Props) {
-  const emptied = balance === 0
+  const outOfStock = balance === 0
 
   return (
-    <Root emptied={emptied}>
+    <Root outOfStock={outOfStock}>
       <Image src={image} alt={title} />
       <p>{title}</p>
     </Root>
