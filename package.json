@@ -3,8 +3,8 @@
     "start": "next start",
     "build": "next build",
     "dev": "next",
-    "fmt": "prettier --write next.config.js pages/**/*.js components/**/*.js flow-typed/**/*",
-    "lint": "eslint next.config.js pages/**/*.js components/**/*.js flow-typed/**/*",
+    "fmt": "prettier --write next.config.js pages/**/*.js components/**/*.js core/**/*.js flow-typed/**/*",
+    "lint": "eslint next.config.js pages/**/*.js components/**/*.js core/**/*.js flow-typed/**/*",
     "lint:css": "stylelint pages/**/*.js components/**/*.js"
   },
   "dependencies": {
