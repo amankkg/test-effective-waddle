@@ -1,2 +1,14 @@
+[include]
+./components/.*
+./core/.*
+./pages/.*
+
 [ignore]
-.*/node_modules/*
+.*/node_modules/styled-components/.*
+
+[lints]
+all=warn
+
+[options]
+esproposal.optional_chaining=enable
+esproposal.nullish_coalescing=enable
