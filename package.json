@@ -2,6 +2,7 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
+    "test": "jest --watch",
     "dev": "next",
     "fmt": "prettier --write next.config.js pages/**/*.js components/**/*.js core/**/*.js flow-typed/**/*",
     "lint:js": "eslint next.config.js pages/**/*.js components/**/*.js core/**/*.js flow-typed/**/*",
@@ -19,6 +20,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
     "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.9.0",
     "babel-plugin-styled-components": "^1.10.6",
     "eslint": "^6.2.1",
     "eslint-config-react-app": "^5.0.1",
@@ -31,6 +33,7 @@
     "eslint-plugin-unicorn": "^10.0.0",
     "flow-bin": "^0.105.2",
     "husky": "^3.0.4",
+    "jest": "^24.9.0",
     "now": "^16.1.2",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
