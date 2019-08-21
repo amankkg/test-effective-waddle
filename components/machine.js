@@ -14,11 +14,11 @@ type Props = {
 
 // TODO: machine grid layout
 // ***************
-// *     H H     *
-// * G G G G P P *
-// * G G G G P P *
-// * G G G G P P *
-// * G G G G     *
+// *     H H     *  where
+// * G G G G P P *    G - goods grid
+// * G G G G P P *    P - goods picker
+// * G G G G P P *    C - cash box
+// * G G G G     *    T - goods takeout
 // * G G G G C C *
 // * G G G G C C *
 // *   T T       *

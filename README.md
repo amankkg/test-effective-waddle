@@ -15,6 +15,10 @@ Vending Machine is an automated unit who's main purpose is to sell goods. Main f
 Basically, it's just a state machine (FSM). State describes whether can we release an item or not. Events reflect money insertion and item selection.
 ![fsm]
 
+#### Money
+
+Good to support different currencies. Prices can be non-integer (\$2.58 ~= main currency + secondary currency). Cash-in should support this too.
+
 ### Features and constraints
 
 - User should be able to start session by inserting money or selecting an item
