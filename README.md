@@ -15,7 +15,7 @@ UI is not finished and not polished, but essential functions are implemented.
 
 Flow errors are not fixed 100%, but this is not the goal anyway.
 
-Unit tests only for some plain JS code. I'd add e2e tests for high-level component (`Machine`) if more time given.
+Unit tests are only for some plain JS code. But I'd add e2e tests for high-level component (`Machine`) if more time given.
 
 CSS-in-JS (`styled-components`) in some places become too cumbersome. I'd refactor and extract some simple components to its own folders.
 
