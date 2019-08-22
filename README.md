@@ -2,7 +2,24 @@
 
 Run `yarn` to install dependencies and then `yarn dev` - run app in dev mode @ http://localhost:3000.
 
-See `./package.json` for details.
+See `./package.json` for details. Check it out live https://test-effective-waddle.amankkg.now.sh
+
+## Notes
+
+For data shape see `./core/constants` Flow type definitions. For UI components see `./components`. `./pages/index.js` is app render root, dummy data lives here too.
+
+No state management (STM) used (only `useState`s) so code became kinda messy with props being passed again and again :( ideally, it should be refactored with external state management.
+But, the logic in `./core` is immutable and STM friendly.
+
+UI is not finished and not polished, but essential functions are implemented.
+
+Flow errors are not fixed 100%, but this is not the goal anyway.
+
+Unit tests only for plain JS code. I'd add e2e tests for high-level component (`Machine`) if more time given.
+
+CSS-in-JS (`styled-components`) in some places become too cumbersome. I'd refactor and extract some simple components to its own folders.
+
+All images used here are free to commercial use.
 
 ## Vending Machine problem high-level breakdown
 
