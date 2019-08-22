@@ -2,17 +2,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
+import type {ProductMap, Stocks} from '../core/constants'
 import {ItemStocks} from './item-stocks'
 
-type Item = {
-  id: string,
-  title: string,
-  imageUrl: string,
-}
-
 type Props = {
-  items: {[Item.id]: Item},
-  stocks: {[Item.id]: number},
+  items: ProductMap,
+  stocks: Stocks,
 }
 
 const Grid = styled.div`
@@ -30,12 +25,12 @@ const StyledItemStocks = styled(ItemStocks)`
 function GoodsGrid({items, stocks, ...rest}: Props) {
   return (
     <Grid {...rest}>
-      {Object.entries(items).map(([id, {title, imageUrl}]) => (
+      {Object.values(items).map(p => (
         <StyledItemStocks
-          key={id}
-          title={title}
-          image={imageUrl}
-          balance={stocks[id]}
+          key={p.id}
+          title={p.title}
+          image={p.imageUrl}
+          balance={stocks[p.id]}
         />
       ))}
     </Grid>

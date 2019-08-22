@@ -8,19 +8,25 @@ export type Product = {
 }
 
 export type Stocks = {
-  [Product.id]: number,
+  [string]: number,
 }
 
-type ProductMap = {
-  [Product.id]: Product,
+export type ProductMap = {
+  [string]: Product,
 }
 
 export type State = {
   funds: number, // >= 0
-  choosenProduct?: Product.id, // null or key value in products map
-  quantity: 1, // 1 >= choosenQuantity <= stocks value
+  choosenProduct: string | null, // null or key value in products map
+  quantity: number, // 1 >= choosenQuantity <= stocks value
   products: ProductMap,
   stocks: Stocks, // map keys should be in products and map values >= 0
+}
+
+// TODO: spread State type?
+export type StateReady = {
+  ...$Exact<State>,
+  choosenProduct: string,
 }
 
 export const status = {
@@ -35,6 +41,6 @@ export const initial: State = {
   funds: 0,
   choosenProduct: null,
   quantity: 1,
-  products: [],
+  products: {},
   stocks: {},
 }

@@ -3,6 +3,7 @@ import * as React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 
+import type {State} from '../core/constants'
 import {Machine} from '../components/machine'
 import {initial} from '../core/constants'
 import * as reducer from '../core/reducers'
@@ -11,8 +12,6 @@ const StyledMachine = styled(Machine)`
   width: 1000px;
   height: 800px;
 `
-
-const imageUrl = 'https://picsum.photos/200/200'
 
 const initialState = {
   ...initial,
@@ -47,10 +46,26 @@ const initialState = {
 //    - split state object to multiple useState/useReducer statements
 //    - or use external state manager (e.g. effector)
 export default () => {
-  const [state, setState] = React.useState(initialState)
-  const payIn = amount => setState(reducer.payIn(state, amount))
-  const chooseProduct = productId => setState(reducer.choose(state, productId))
-  const purchaseProduct = () => setState(reducer.purchase(state))
+  const [state, setNextState] = React.useState<State>(initialState)
+
+  const payIn = amount => {
+    const nextState = reducer.payIn(state, amount)
+    setNextState(nextState)
+  }
+
+  const chooseProduct = productId => {
+    const nextState = reducer.choose(state, productId)
+
+    setNextState(nextState)
+  }
+
+  const purchaseProduct = () => {
+    if (state.choosenProduct === null) return
+
+    const nextState = reducer.purchase(state)
+
+    setNextState(nextState)
+  }
 
   return (
     <>
@@ -61,6 +76,8 @@ export default () => {
         products={state.products}
         stocks={state.stocks}
         funds={state.funds}
+        choosenProduct={state.choosenProduct}
+        quantity={state.quantity}
         payIn={payIn}
         purchase={purchaseProduct}
       />

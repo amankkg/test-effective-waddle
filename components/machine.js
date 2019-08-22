@@ -2,25 +2,27 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
+import type {State} from '../core/constants'
+import {checkStatus} from '../core/selectors'
 import {GoodsGrid} from './goods-grid'
 import {CashBox} from './cash-box'
 
-type Props = {
-  products: {},
-  stocks: {},
-  funds: number,
-  payIn: () => void,
+type Props = State & {
+  payIn: number => void,
+  purchase: () => void,
 }
 
-// TODO: grid layout
 // +-------------------+
 // |      header       | 60px
 // +-------------------+
 // +-auto--+ +-250px---+
 // |       | | picker  | auto
 // |       | +---------+
-// | goods | +-250px---+
-// |       | | cashbox | auto
+// |       | +-250px---+
+// | goods | | cashbox | auto
+// |       | +---------+
+// |       | +-250px---+
+// |       | | summary |
 // +-------+ +---------+
 // +-------------------+
 // |      takeout      | 120px
@@ -28,7 +30,7 @@ type Props = {
 const Grid = styled.div`
   display: grid;
   align-content: space-between;
-  grid-template: 'h h ' 60px 'g p ' 1fr 'g c' 1fr 't t' 120px / 1fr 250px;
+  grid-template: 'h h ' 60px 'g p ' 1fr 'g c' 1fr 'g s' 1fr 't t' 120px / 1fr 250px;
   background: #272822;
   color: #ececec;
   padding: 15px;
@@ -61,6 +63,13 @@ const CashBoxArea = styled(CashBox)`
   padding: 5px;
 `
 
+const SummaryArea = styled.div`
+  grid-area: s;
+  border: 2px dashed white;
+  margin: 5px;
+  padding: 5px;
+`
+
 const P = styled.div`
   grid-area: p;
   background: pink;
@@ -79,7 +88,26 @@ const T = styled.div`
   color: black;
 `
 
-function Machine({products, stocks, funds, payIn, ...rest}: Props) {
+function Machine(props: Props) {
+  const {
+    products,
+    stocks,
+    funds,
+    quantity,
+    choosenProduct,
+    payIn,
+    purchase,
+    ...rest
+  } = props
+  // TODO: connect SummaryArea to state storage directly
+  const status = checkStatus({
+    products,
+    stocks,
+    funds,
+    choosenProduct,
+    quantity,
+  })
+
   return (
     <Grid {...rest}>
       <HeaderArea>
@@ -88,6 +116,7 @@ function Machine({products, stocks, funds, payIn, ...rest}: Props) {
       <GoodsArea items={products} stocks={stocks} />
       <P>todo: GOODS PICKER</P>
       <CashBoxArea unit="$" subUnit="c" balance={funds} payIn={payIn} />
+      <SummaryArea>status: {status}</SummaryArea>
       <T>todo: GOODS TAKEOUT</T>
     </Grid>
   )

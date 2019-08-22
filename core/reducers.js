@@ -1,5 +1,5 @@
 // @flow
-import type {State, Product} from './constants'
+import type {State, StateReady, Product} from './constants'
 
 // TODO: use lenses to simplify immmutable updates
 
@@ -9,7 +9,7 @@ export const addProduct = (state: State, product: Product) => ({
   stocks: {...state.stocks, [product.id]: 0},
 })
 
-export const removeProduct = (state: State, productId: Product.id) => ({
+export const removeProduct = (state: State, productId: string) => ({
   // TODO: remove entries entirely instead of setting undefined value
   ...state,
   products: {...state.products, [productId]: undefined},
@@ -18,7 +18,7 @@ export const removeProduct = (state: State, productId: Product.id) => ({
 
 export const repelnishStocks = (
   state: State,
-  productId: Product.id,
+  productId: string,
   quantity: number,
 ) => ({
   ...state,
@@ -35,14 +35,14 @@ export const payIn = (state: State, amount: number) => ({
   funds: state.funds + amount,
 })
 
-export const choose = (state: State, productId: Product.id) => ({
+export const choose = (state: State, productId: string) => ({
   ...state,
   choosenProduct: productId,
 })
 
-export const purchase = (state: State) => {
+export const purchase = (state: StateReady) => {
   const product = state.products[state.choosenProduct]
-  const productStocks = stocks[product.id]
+  const productStocks = state.stocks[product.id]
 
   return {
     ...state,
