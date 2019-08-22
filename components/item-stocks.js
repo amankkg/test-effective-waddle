@@ -5,7 +5,9 @@ import styled from 'styled-components'
 type Props = {
   title: string,
   image: string,
+  price: string,
   balance: number,
+  active: boolean,
 }
 
 // TODO: effect of multiple items
@@ -26,7 +28,8 @@ const Root = styled.div`
   height: 220px;
   margin: 10px 5px;
   background: #2f3029;
-  border-radius: 40px;
+  border: ${props => (props.active ? '5px solid orange' : 'none')};
+  transform: ${props => (props.active ? 'scale(1.1)' : 'none')};
 
   & > * {
     opacity: ${props => (props.outOfStock ? '0.33' : '1')};
@@ -34,13 +37,15 @@ const Root = styled.div`
   }
 `
 
-function ItemStocks({title, image, balance, ...rest}: Props) {
+function ItemStocks({title, image, price, balance, active, ...rest}: Props) {
   const outOfStock = balance === 0
 
   return (
-    <Root outOfStock={outOfStock} {...rest}>
+    <Root active={active} outOfStock={outOfStock} {...rest}>
       <Image src={image} alt={title} />
-      <p>{title}</p>
+      <p>
+        {title} ({balance} pcs)
+      </p>
     </Root>
   )
 }

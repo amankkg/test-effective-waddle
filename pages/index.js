@@ -50,6 +50,7 @@ export default () => {
 
   const payIn = amount => {
     const nextState = reducer.payIn(state, amount)
+
     setNextState(nextState)
   }
 
@@ -60,7 +61,7 @@ export default () => {
   }
 
   const purchaseProduct = () => {
-    if (state.choosenProduct === null) return
+    if (state.chosenProduct === null) return
 
     const nextState = reducer.purchase(state)
 
@@ -76,9 +77,10 @@ export default () => {
         products={state.products}
         stocks={state.stocks}
         funds={state.funds}
-        choosenProduct={state.choosenProduct}
+        chosenProduct={state.chosenProduct}
         quantity={state.quantity}
         payIn={payIn}
+        choose={chooseProduct}
         purchase={purchaseProduct}
       />
     </>

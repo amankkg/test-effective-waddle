@@ -8,6 +8,8 @@ import {ItemStocks} from './item-stocks'
 type Props = {
   items: ProductMap,
   stocks: Stocks,
+  chosen: string,
+  choose: string => void,
 }
 
 const Grid = styled.div`
@@ -22,7 +24,7 @@ const StyledItemStocks = styled(ItemStocks)`
 `
 
 // TODO: item click should choose product OR do it outside only?
-function GoodsGrid({items, stocks, ...rest}: Props) {
+function GoodsGrid({items, stocks, choose, chosen, ...rest}: Props) {
   return (
     <Grid {...rest}>
       {Object.values(items).map(p => (
@@ -31,6 +33,9 @@ function GoodsGrid({items, stocks, ...rest}: Props) {
           title={p.title}
           image={p.imageUrl}
           balance={stocks[p.id]}
+          active={chosen === p.id}
+          onClick={() => choose(p.id)}
+          tabIndex="0"
         />
       ))}
     </Grid>

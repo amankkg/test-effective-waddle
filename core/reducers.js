@@ -37,17 +37,17 @@ export const payIn = (state: State, amount: number) => ({
 
 export const choose = (state: State, productId: string) => ({
   ...state,
-  choosenProduct: productId,
+  chosenProduct: productId,
 })
 
 export const purchase = (state: StateReady) => {
-  const product = state.products[state.choosenProduct]
+  const product = state.products[state.chosenProduct]
   const productStocks = state.stocks[product.id]
 
   return {
     ...state,
     funds: state.funds - state.quantity * product.price,
-    choosenProduct: null,
+    chosenProduct: null,
     stocks: {...state.stocks, [product.id]: productStocks - state.quantity},
   }
 }

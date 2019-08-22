@@ -9,6 +9,7 @@ import {CashBox} from './cash-box'
 
 type Props = State & {
   payIn: number => void,
+  choose: string => void,
   purchase: () => void,
 }
 
@@ -94,8 +95,9 @@ function Machine(props: Props) {
     stocks,
     funds,
     quantity,
-    choosenProduct,
+    chosenProduct,
     payIn,
+    choose,
     purchase,
     ...rest
   } = props
@@ -104,7 +106,7 @@ function Machine(props: Props) {
     products,
     stocks,
     funds,
-    choosenProduct,
+    chosenProduct,
     quantity,
   })
 
@@ -113,7 +115,12 @@ function Machine(props: Props) {
       <HeaderArea>
         <h1>vending machine</h1>
       </HeaderArea>
-      <GoodsArea items={products} stocks={stocks} />
+      <GoodsArea
+        items={products}
+        stocks={stocks}
+        chosen={chosenProduct}
+        choose={choose}
+      />
       <P>todo: GOODS PICKER</P>
       <CashBoxArea unit="$" subUnit="c" balance={funds} payIn={payIn} />
       <SummaryArea>status: {status}</SummaryArea>
