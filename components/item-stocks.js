@@ -2,6 +2,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
+import {getDisplayValue} from '../core/money'
+
 type Props = {
   title: string,
   image: string,
@@ -39,12 +41,14 @@ const Root = styled.div`
 
 function ItemStocks({title, image, price, balance, active, ...rest}: Props) {
   const outOfStock = balance === 0
+  const uglyPrice = getDisplayValue(price)
+  const prettyPrice = `$${uglyPrice.unit}.${uglyPrice.subUnit}` // TODO: remove hardoced currency
 
   return (
     <Root active={active} outOfStock={outOfStock} {...rest}>
       <Image src={image} alt={title} />
       <p>
-        {title} ({balance} pcs)
+        {prettyPrice} | {title} | {balance} pcs
       </p>
     </Root>
   )

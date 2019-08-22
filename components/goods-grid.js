@@ -32,6 +32,7 @@ function GoodsGrid({items, stocks, choose, chosen, ...rest}: Props) {
           key={p.id}
           title={p.title}
           image={p.imageUrl}
+          price={p.price}
           balance={stocks[p.id]}
           active={chosen === p.id}
           onClick={() => choose(p.id)}
