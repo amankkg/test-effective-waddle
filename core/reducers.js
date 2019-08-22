@@ -40,8 +40,8 @@ export const choose = (state: State, productId: Product.id) => ({
   choosenProduct: productId,
 })
 
-export const purchase = (state: State, productId: Product.id) => {
-  const product = products[productId]
+export const purchase = (state: State) => {
+  const product = state.products[state.choosenProduct]
   const productStocks = stocks[product.id]
 
   return {
