@@ -1,18 +1,15 @@
 // @flow
-type Unit = number // e.g. euro
-type SubUnit = number // e.g. euro cent
+
 type DisplayValue = {
   // e.g. $2.5 = $2.00 and 50c
-  unit: Unit,
-  subUnit: Unit,
+  unit: number,
+  subUnit: number,
 }
 
-export type MonetaryValue = number // ultimate value
+export const getMonetaryValue = (value: DisplayValue) =>
+  Math.floor(value.unit) * 100 + Math.floor(value.subUnit)
 
-export const getMonetaryValue = ({unit, subUnit}: DisplayValue) =>
-  Math.floor(unit) * 100 + Math.floor(subUnit)
-
-export const getDisplayValue = (value: MonetaryValue) => {
+export const getDisplayValue = (value: number) => {
   const raw = value / 100
   const unit = Math.floor(raw)
   const subUnit = Math.floor(value - unit * 100)
@@ -20,8 +17,8 @@ export const getDisplayValue = (value: MonetaryValue) => {
   return {unit, subUnit}
 }
 
-export const addUnit = (current: MonetaryValue, added: Unit) =>
+export const addUnit = (current: number, added: number) =>
   Math.floor(current) + Math.floor(added) * 100
 
-export const addSubUnit = (current: MonetaryValue, added: SubUnit) =>
+export const addSubUnit = (current: number, added: number) =>
   Math.floor(current) + Math.floor(added)
