@@ -3,6 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import type {State} from '../core/constants'
+import {status} from '../core/constants'
 import {checkStatus} from '../core/selectors'
 import {GoodsGrid} from './goods-grid'
 import {CashBox} from './cash-box'
@@ -71,6 +72,17 @@ const SummaryArea = styled.div`
   padding: 5px;
 `
 
+const PurchaseButton = styled.button`
+  font-size: x-large;
+  text-transform: uppercase;
+  background-color: orange;
+  color: green;
+  width: 100%;
+  height: 100px;
+  cursor: pointer;
+  opacity: ${props => (props.disabled ? '0.33' : '1')};
+`
+
 const P = styled.div`
   grid-area: p;
   background: pink;
@@ -102,7 +114,7 @@ function Machine(props: Props) {
     ...rest
   } = props
   // TODO: connect SummaryArea to state storage directly
-  const status = checkStatus({
+  const statusText = checkStatus({
     products,
     stocks,
     funds,
@@ -123,7 +135,15 @@ function Machine(props: Props) {
       />
       <P>todo: GOODS PICKER</P>
       <CashBoxArea unit="$" subUnit="c" balance={funds} payIn={payIn} />
-      <SummaryArea>status: {status}</SummaryArea>
+      <SummaryArea>
+        <p>{statusText}</p>
+        <PurchaseButton
+          onClick={purchase}
+          disabled={statusText !== status.READY}
+        >
+          purchase
+        </PurchaseButton>
+      </SummaryArea>
       <T>todo: GOODS TAKEOUT</T>
     </Grid>
   )
