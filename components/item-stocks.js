@@ -29,6 +29,7 @@ const Root = styled.div`
 
   & > * {
     opacity: ${props => (props.outOfStock ? '0.33' : '1')};
+    text-decoration: ${props => (props.outOfStock ? 'strikethrough' : 'none')};
   }
 `
 

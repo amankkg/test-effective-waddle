@@ -26,7 +26,7 @@ const StyledItemStocks = styled(ItemStocks)`
   cursor: pointer;
 `
 
-// TODO: item click
+// TODO: item click should choose product OR do it outside only?
 function GoodsGrid({items, stocks, ...rest}: Props) {
   return (
     <Grid {...rest}>
