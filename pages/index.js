@@ -17,12 +17,27 @@ const imageUrl = 'https://picsum.photos/200/200'
 const initialState = {
   ...initial,
   products: {
-    '1': {id: '1', title: 'snack #1', imageUrl, price: 123},
-    '2': {id: '2', title: 'snack #2', imageUrl, price: 258},
-    '3': {id: '3', title: 'snack #3', imageUrl, price: 200},
-    '4': {id: '4', title: 'snack #4', imageUrl, price: 300},
-    '5': {id: '5', title: 'snack #5', imageUrl, price: 75},
-    '6': {id: '6', title: 'snack #6', imageUrl, price: 420},
+    '1': {
+      id: '1',
+      title: 'biscuits',
+      imageUrl: '/static/biscuit.jpg',
+      price: 110,
+    },
+    '2': {id: '2', title: 'cakes', imageUrl: '/static/cake.jpg', price: 225},
+    '3': {id: '3', title: 'candies', imageUrl: '/static/candy.jpg', price: 160},
+    '4': {
+      id: '4',
+      title: 'cookies',
+      imageUrl: '/static/cookie.jpg',
+      price: 300,
+    },
+    '5': {
+      id: '5',
+      title: 'popcorn',
+      imageUrl: '/static/popcorn.jpg',
+      price: 75,
+    },
+    '6': {id: '6', title: 'rolls', imageUrl: '/static/roll.jpg', price: 420},
   },
   stocks: {'1': 5, '2': 0, '3': 3, '4': 8, '5': 10, '6': 14},
 }
@@ -47,6 +62,7 @@ export default () => {
         stocks={state.stocks}
         funds={state.funds}
         payIn={payIn}
+        purchase={purchaseProduct}
       />
     </>
   )

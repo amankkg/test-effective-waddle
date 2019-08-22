@@ -14,6 +14,7 @@ const Image = styled.img`
   height: 150px;
   border-radius: 15px;
   margin-top: 15px;
+  transform: perspective(17em) rotateX(15deg) rotate(-6deg);
 `
 
 const Root = styled.div`
