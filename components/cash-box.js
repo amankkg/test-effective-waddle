@@ -13,13 +13,12 @@ type Props = {
 }
 
 const Root = styled.div`
-  width: 250px;
-  height: 125px;
+  max-height: 150px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-start;
 `
 
 const Hr = styled.hr`

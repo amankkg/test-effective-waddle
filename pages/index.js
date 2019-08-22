@@ -8,8 +8,8 @@ import {initial} from '../core/constants'
 import * as reducer from '../core/reducers'
 
 const StyledMachine = styled(Machine)`
-  width: 600px;
-  height: 1000px;
+  width: 1000px;
+  height: 800px;
 `
 
 const imageUrl = 'https://picsum.photos/200/200'
