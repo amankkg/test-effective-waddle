@@ -11,7 +11,7 @@ type Item = {
 }
 
 type Props = {
-  items: Item[],
+  items: {[Item.id]: Item},
   stocks: {[Item.id]: number},
 }
 
@@ -22,11 +22,16 @@ const Grid = styled.div`
   flex-wrap: wrap;
 `
 
+const StyledItemStocks = styled(ItemStocks)`
+  cursor: pointer;
+`
+
+// TODO: item click
 function GoodsGrid({items, stocks, ...rest}: Props) {
   return (
     <Grid {...rest}>
-      {items.map(({id, title, imageUrl}) => (
-        <ItemStocks
+      {Object.entries(items).map(([id, {title, imageUrl}]) => (
+        <StyledItemStocks
           key={id}
           title={title}
           image={imageUrl}

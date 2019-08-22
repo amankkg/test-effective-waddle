@@ -8,8 +8,8 @@ import {GoodsGrid} from './goods-grid'
 // import {Takeout} from './takeout'
 
 type Props = {
-  items: [],
-  stocks: [],
+  products: {},
+  stocks: {},
 }
 
 // TODO: machine grid layout
@@ -41,11 +41,11 @@ const H = styled.h1`
 // const C = styled(CashBox)
 // const T = styled(Takeout)
 
-function Machine({items, stocks, ...rest}: Props) {
+function Machine({products, stocks, ...rest}: Props) {
   return (
     <BoxContainer {...rest}>
       <H>vending machine</H>
-      <GoodsGrid items={items} stocks={stocks} />
+      <GoodsGrid items={products} stocks={stocks} />
       {/* <P />
       <C />
       <T /> */}

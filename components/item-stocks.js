@@ -10,8 +10,8 @@ type Props = {
 
 // TODO: effect of multiple items
 const Image = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 15px;
   margin-top: 15px;
 `
@@ -21,21 +21,22 @@ const Root = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 250px;
-  height: 270px;
+  width: 200px;
+  height: 220px;
+  margin: 10px 5px;
   background: #2f3029;
-  border-radius: 50px;
+  border-radius: 40px;
 
   & > * {
-    opacity: ${props => (props.outOfStock ? '0.5' : '1')};
+    opacity: ${props => (props.outOfStock ? '0.33' : '1')};
   }
 `
 
-function ItemStocks({title, image, balance}: Props) {
+function ItemStocks({title, image, balance, ...rest}: Props) {
   const outOfStock = balance === 0
 
   return (
-    <Root outOfStock={outOfStock}>
+    <Root outOfStock={outOfStock} {...rest}>
       <Image src={image} alt={title} />
       <p>{title}</p>
     </Root>
