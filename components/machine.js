@@ -4,12 +4,14 @@ import styled from 'styled-components'
 
 import {GoodsGrid} from './goods-grid'
 // import {GoodsPicker} from './goods-picker'
-// import {CashBox} from './cash-box'
+import {CashBox} from './cash-box'
 // import {Takeout} from './takeout'
 
 type Props = {
   products: {},
   stocks: {},
+  funds: number,
+  payIn: () => void,
 }
 
 // TODO: machine grid layout
@@ -38,17 +40,16 @@ const H = styled.h1`
 `
 // const G = styled(GoodsGrid)
 // const P = styled(GoodsPicker)
-// const C = styled(CashBox)
 // const T = styled(Takeout)
 
-function Machine({products, stocks, ...rest}: Props) {
+function Machine({products, stocks, funds, payIn, ...rest}: Props) {
   return (
     <BoxContainer {...rest}>
       <H>vending machine</H>
       <GoodsGrid items={products} stocks={stocks} />
-      {/* <P />
-      <C />
-      <T /> */}
+      {/* <P /> */}
+      <CashBox unit="$" subUnit="c" balance={funds} payIn={payIn} />
+      {/* <T /> */}
     </BoxContainer>
   )
 }
